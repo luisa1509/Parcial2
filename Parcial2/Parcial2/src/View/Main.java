@@ -1,5 +1,6 @@
 package View;
 
+import Model.Logica;
 import processing.core.PApplet;
 
 public class Main extends PApplet{
@@ -10,16 +11,20 @@ public class Main extends PApplet{
 
 	}
 	
+	Logica logica;
 	
 	public void setup() {
+		
+		logica= new Logica(this);
 		
 	}
 	
 	public void settings() {
-		
+		size(900,600);
 	}
 	
 	public void draw() {
+		background(255);
 		
 	}
 	
