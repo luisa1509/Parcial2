@@ -8,10 +8,12 @@ public class Logica {
 	
 	private LinkedList <Personaje> perso;
 	private PApplet app;
+	private Personaje [] seleccionados;
 	
 	 public Logica(PApplet app) {
 		 perso= new LinkedList <Personaje>();
 		 this.app=app;
+		 
 	 }
 	 
 	 public void pintarPersonaje() {
