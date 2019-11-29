@@ -3,35 +3,51 @@ package Model;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Personaje {
+public class Personaje implements Runnable{
 	private int edad;
-	private int numeroS;
-	private int posx;
-	private int posy;
+	private float numeroS;
+	private float posx;
+	private float posy;
 	private int dirx;
 	private PApplet app;
 	private PImage imagen;
 	
 	
-	public Personaje(int posx, int posy, int edad,int numeroS) {
+	public Personaje(float posx, float posy, int edad,float numeroS,PApplet app) {
 		this.posx=posx;
 		this.posy=posy;
 		this.edad=edad;
 		this.numeroS=numeroS;
+		this.app=app;
+		this.dirx=1;
 		
 		this.imagen=app.loadImage("lisa_simpson.png");
+		
+		
+		new Thread(this).start();
 	}
 	
 	
 	public void pintar() {
-		app.image(imagen,posx,posy);
+		app.image(imagen,posx,posy,100,100);
 	}
 	
 	public void mover() {
-		this.posx += 1*this.dirx;
-        if (this.posx <=25 || this.posx >= 875){
-            this.dirx *=-1;
+		posx += 1*dirx;
+        if (posx <=25 || posx >= 875){
+            dirx *=-1;
         }
+	}
+	
+	public void run() {
+		mover();
+		
+		try{
+			Thread.sleep(1000);
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		
 	}
 
 
@@ -45,32 +61,32 @@ public class Personaje {
 	}
 
 
-	public int getNumeroS() {
+	public float getNumeroS() {
 		return numeroS;
 	}
 
 
-	public void setNumeroS(int numeroS) {
+	public void setNumeroS(float numeroS) {
 		this.numeroS = numeroS;
 	}
 
 
-	public int getPosx() {
+	public float getPosx() {
 		return posx;
 	}
 
 
-	public void setPosx(int posx) {
+	public void setPosx(float posx) {
 		this.posx = posx;
 	}
 
 
-	public int getPosy() {
+	public float getPosy() {
 		return posy;
 	}
 
 
-	public void setPosy(int posy) {
+	public void setPosy(float posy) {
 		this.posy = posy;
 	}
 
