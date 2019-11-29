@@ -36,11 +36,14 @@ public class Main extends PApplet{
 		
 		if(mouseX>400 && mouseX<600 && mouseY>400 && mouseY<500) {
 			System.out.println("se pinto");
-		
+			logica.agregar();
 		}
 		
+		logica.agregarSel();
 		
-		logica.agregar();
+		
+		
+		
 		
 	}
 	
